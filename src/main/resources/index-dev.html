@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Scala.js/JavaScript Interoperability</title>
+</head>
+<body>
+  <button id="btn1" type="button">Trigger SJS from JS</button>
+  <script type="text/javascript" src="../sjs-js-interop-jsdeps.js"></script>
+  <script type="text/javascript" src="../sjs-js-interop-fastopt.js"></script>
+  <script type="text/javascript" src="../sjs-js-interop-launcher.js"></script>
+  <script type="text/javascript" src="foo.js"></script>
+  <script type="text/javascript" src="/workbench.js"></script>
+
+  <!-- calling Scala.js from JavaScript -->
+  <script type="text/javascript">
+    var btn1 = document.getElementById("btn1");
+    btn1.addEventListener("click", function(e) {
+      console.log(new base.webapp.FooClass().sayHello("foo"));
+      console.log(base.webapp.FooObject().sayHello("bar"));
+      console.log(MyFoo().sayHelloMyWay("baz"));
+      console.log(MyFoo().foo({y: 987}));
+    });
+  </script>
+</body>
+</html>
